@@ -2,13 +2,14 @@
 //
 
 #include "stdafx.h"
-#include "MyBinaryTree.h"
-
 #include <iostream>
 #include <vector>
 #include <stack>
 
 using namespace std;
+
+#include "MyBinaryTree.h"
+#include "list.h"
 
 template<class t> 
 void printVector(vector<t>& v)
@@ -197,6 +198,25 @@ void merge1(vector<int>& a, const vector<int>& b, int aSize, int bSize)
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+    //--list test
+    listNode* head = NULL;
+    makeTestList(&head);
+    //printList(head);
+    //deleteList1(&head);
+    //printList(head);
+
+    //makeTestList(&head);    
+    //listNode* n = new listNode();
+    //n->next = NULL;
+    //n->value = 100;
+    //SortedInsert(&head, n);
+    //printList(head);
+    //SortUsingSortedInsert(&head);
+    printList(head);
+    Reverse(&head);
+    printList(head);
+    ReverseR(&head);
+    printList(head);
     //--merge two arrays
     //vector<int> a;
     //a.push_back(1);
@@ -232,15 +252,15 @@ int _tmain(int argc, _TCHAR* argv[])
     //cout << "-- result for 4 pair" << endl;
     //printMatchedParenthese(4);
     //--binary search tree
-    Node<int>* root;
-    root = NULL;
-    root = insert(root, 4);
-    root = insert(root, 2);
-    root = insert(root, 5);
-    root = insert(root, 1);
-    root = insert(root, 3);
+    //Node<int>* root;
+    //root = NULL;
+    //root = insert(root, 4);
+    //root = insert(root, 2);
+    //root = insert(root, 5);
+    //root = insert(root, 1);
+    //root = insert(root, 3);
     //printAllPaths(root);
-    printTreeFormat1(root);
+    //printTreeFormat1(root);
     //int count = countChildren(root);
     //cout << "count: " << count << endl;
 
