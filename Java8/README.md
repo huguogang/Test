@@ -11,19 +11,22 @@
  Parallel   |25              |1000
 
 Observations:
-* Parallel filtering is an easy win, performance gained about 3 times on a quad-core computer
-* Parallel collection is big **loser**, the `collect` part took about 3 times longer
+* Parallel filtering is an easy win, performance gained about 3 times on a quad-core computer;
+* Parallel collection is big **loser**, the `collect` part took about 3 times longer;
+* Parallel streaming performance has very high variation;
 
 
 ## Box_vs_Int_Stream
-`mapInt().sum()`
-`map().reduce(0, (a, b) -> a + b)`
+Int        		`mapInt().sum()`
+Boxing     		`map().reduce(0, (a, b) -> a + b)`
+Boxing Reduce 2	`map().reduce((a, b) -> a + b)`
 
-            |Boxing |Int
- -----------|------:|----:
- Stream     |115    |85
- Parallel   |210    |87
+            |Boxing |Int  | Boxing Reduce 2
+ -----------|------:|----:|-----------------:
+ Stream     |115    |80   |108
+ Parallel   |64     |40   |110
  
 Observations:
 * Parallel streaming does not improve performance for this algorithm, if not worse;
 * Boxing does have non-trivial overhead vs. IntStream; 
+* Parallel stream again showed very high variability. It actually rarely achieves the numbers shown above;
