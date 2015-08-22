@@ -2,7 +2,18 @@
 
 ## Sequential_vs_Parallel_Stream
 
-This pair of test is showing a simple switch from `stream` to `parallelStream` can easily gain some performance for the filtering. On my laptop (4 core CPU), it is consistently showing close to 4 times improvements (~130 ms vs. ~40 ms);
+`.stream().filter((Integer i) -> Math.sqrt(i) > i / 2).collect(Collectors.toList())`
+`.parallelStream().filter((Integer i) -> Math.sqrt(i) > i / 2).collect(Collectors.toList())`
+
+            |Collect Nothing |Collect 10,000,000
+ -----------|---------------:|------------------:
+ Stream     |70              |330
+ Parallel   |25              |1000
+
+Observations:
+* Parallel filtering is an easy win, performance gained about 3 times on a quad-core computer
+* Parallel collection is big **loser**, the `collect` part took about 3 times longer
+
 
 ## Box_vs_Int_Stream
 `mapInt().sum()`

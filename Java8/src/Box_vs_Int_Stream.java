@@ -64,7 +64,8 @@ public class Box_vs_Int_Stream {
 		List<ValueObject> ret = new ArrayList<>(count);
 
 		for (int i = 0; i < count; ++i) {
-			int n = (int) (Math.random() * 10);
+			// int n = (int) (Math.random() * 10);
+			int n = 2;
 			ValueObject vo = new ValueObject(n);
 			ret.add(vo);
 		}
