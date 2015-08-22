@@ -5,12 +5,7 @@ import java.util.stream.Collectors;
 
 import org.junit.Test;
 
-/**
- * Some tests of new language features in Java 8.
- * 
- * @author huguogang
- */
-public class Java8Test {
+public class Sequential_vs_Parallel_Stream {
 
 	private static final int LIST_LEN = 10000000;
 
@@ -18,10 +13,10 @@ public class Java8Test {
 	public void sequentialStreamTest() {
 		List<Integer> input = genData(LIST_LEN);
 		long before = Instant.now().toEpochMilli();
-		List<Integer> ones = input.stream().filter((Integer i) -> Math.sqrt(i) > i / 2)
+		List<Integer> result = input.stream().filter((Integer i) -> Math.sqrt(i) > i / 2)
 				.collect(Collectors.toList());
 		long after = Instant.now().toEpochMilli();
-		System.out.printf("Result count:%d\n", ones.size());
+		System.out.printf("Result count:%d\n", result.size());
 		System.out.printf("Time:%d\n", after - before);
 	}
 
@@ -29,10 +24,10 @@ public class Java8Test {
 	public void parallelStreamTest() {
 		List<Integer> input = genData(LIST_LEN);
 		long before = Instant.now().toEpochMilli();
-		List<Integer> ones = input.parallelStream().filter((Integer i) -> Math.sqrt(i) > i / 2)
+		List<Integer> result = input.parallelStream().filter((Integer i) -> Math.sqrt(i) > i / 2)
 				.collect(Collectors.toList());
 		long after = Instant.now().toEpochMilli();
-		System.out.printf("Result count:%d\n", ones.size());
+		System.out.printf("Result count:%d\n", result.size());
 		System.out.printf("Time:%d\n", after - before);
 	}
 
